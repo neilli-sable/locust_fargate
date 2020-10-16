@@ -3,11 +3,15 @@ provider "aws" {
   region  = "ap-northeast-1"
 }
 
+variable "region" {
+    default = "ap-northeast-1"
+}
+
 variable "general_name" {
   default = "locust-fargate"
 }
 
-variable "slave_count" {
+variable "worker_count" {
   default = 1
 }
 

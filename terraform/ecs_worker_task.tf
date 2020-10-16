@@ -1,5 +1,5 @@
-resource "aws_ecs_task_definition" "slave" {
-  family = "locust-slave"
+resource "aws_ecs_task_definition" "worker" {
+  family = "locust-worker"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.fargate_cpu
@@ -12,8 +12,8 @@ resource "aws_ecs_task_definition" "slave" {
     "essential": true,
     "image": "${var.locust_container}",
     "memoryReservation": ${var.fargate_memory},
-    "name": "locust-slave",
-    "command": ["locust", "-f", "${var.locust_script_path}", "--slave", "--master-host=master.locust.internal"]
+    "name": "locust-worker",
+    "command": ["-f", "${var.locust_script_path}", "--worker", "--master-host=master.locust.internal"]
   }
 ]
 DEFINITION

@@ -38,14 +38,14 @@ resource "aws_security_group" "master" {
     from_port   = 5557
     to_port     = 5557
     protocol    = "tcp"
-    security_groups = [aws_security_group.slave.id]
+    security_groups = [aws_security_group.worker.id]
   }
 
   ingress {
     from_port   = 5558
     to_port     = 5558
     protocol    = "tcp"
-    security_groups = [aws_security_group.slave.id]
+    security_groups = [aws_security_group.worker.id]
   }
  
   egress {

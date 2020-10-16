@@ -17,7 +17,7 @@ resource "aws_ecs_task_definition" "master" {
     "image": "${var.locust_container}",
     "memoryReservation": ${var.fargate_memory},
     "name": "locust-master",
-    "command": ["locust", "-f", "${var.locust_script_path}", "--master"],
+    "command": ["-f", "${var.locust_script_path}", "--master"],
     "portMappings": [
       {
         "containerPort": 8089,

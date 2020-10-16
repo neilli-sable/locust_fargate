@@ -22,7 +22,7 @@ resource "aws_internet_gateway" "gateway" {
 resource "aws_subnet" "subnet_a" {
   vpc_id            = aws_vpc.vpc.id
   cidr_block        = "10.0.10.0/24"
-  availability_zone = "ap-northeast-1a"
+  availability_zone = "${var.region}a"
 
   tags = {
     Name = var.general_name
@@ -32,7 +32,7 @@ resource "aws_subnet" "subnet_a" {
 resource "aws_subnet" "subnet_c" {
   vpc_id            = aws_vpc.vpc.id
   cidr_block        = "10.0.20.0/24"
-  availability_zone = "ap-northeast-1c"
+  availability_zone = "${var.region}c"
 
   tags = {
     Name = var.general_name
